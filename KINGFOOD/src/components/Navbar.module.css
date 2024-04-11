@@ -1,0 +1,112 @@
+.navbarChild {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-gray-200);
+}
+.kingfood {
+  position: absolute;
+  top: 37.82%;
+  left: 15.31%;
+  font-size: var(--font-size-11xl);
+}
+.navbarItem {
+  position: absolute;
+  height: 50.42%;
+  width: 37.14%;
+  top: 24.37%;
+  right: 31.51%;
+  bottom: 25.21%;
+  left: 31.35%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: var(--br-6xl);
+  background-color: var(--color-white);
+}
+.navbarInner {
+  position: absolute;
+  height: 37.82%;
+  width: 0.47%;
+  top: 31.09%;
+  right: 51.35%;
+  bottom: 31.09%;
+  left: 48.18%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.kingfood1Hng,
+.tmKimNh {
+  position: absolute;
+  top: 43.7%;
+  left: 34.43%;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.tmKimNh {
+  left: 51.82%;
+  font-weight: 500;
+}
+.ellipseIcon {
+  position: absolute;
+  height: 50.42%;
+  width: 3.13%;
+  top: 24.37%;
+  right: 18.75%;
+  bottom: 25.21%;
+  left: 78.13%;
+  border-radius: 50%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.kien {
+  position: absolute;
+  top: 39.5%;
+  left: 82.19%;
+  font-size: var(--font-size-xl);
+}
+.groupIcon,
+.hugeIcon,
+.vectorIcon {
+  position: absolute;
+  height: 20.17%;
+  width: 1.25%;
+  top: 39.5%;
+  right: 49.38%;
+  bottom: 40.34%;
+  left: 49.38%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.hugeIcon,
+.vectorIcon {
+  height: 7.9%;
+  width: 1.1%;
+  top: 46.22%;
+  right: 52.44%;
+  bottom: 45.88%;
+  left: 46.46%;
+}
+.hugeIcon {
+  height: 26.89%;
+  width: 1.67%;
+  top: 35.29%;
+  right: 66.09%;
+  bottom: 37.82%;
+  left: 32.24%;
+}
+.navbar {
+  width: 1920px;
+  max-width: 100%;
+  height: 119px;
+  text-align: left;
+  font-size: var(--font-size-xs);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}

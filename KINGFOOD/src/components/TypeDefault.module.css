@@ -1,0 +1,7 @@
+.typedefaultIcon {
+  width: 180px;
+  max-width: 100%;
+  overflow: hidden;
+  height: 52px;
+  flex-shrink: 0;
+}

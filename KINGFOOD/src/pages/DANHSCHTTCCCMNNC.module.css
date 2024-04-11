@@ -1,0 +1,164 @@
+.danhSchTtCCcMnNCChild {
+  position: absolute;
+  top: 119px;
+  left: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-white);
+  width: 1920px;
+  height: 160px;
+}
+.nUng {
+  position: absolute;
+  top: 184px;
+  left: 398px;
+  color: #f04141;
+}
+.nightlife {
+  position: absolute;
+  top: 180px;
+  left: 844px;
+}
+.deliveryComingSoon {
+  position: absolute;
+  top: 184px;
+  left: 1326px;
+  color: var(--color-darkgray-100);
+}
+.danhSchTtCCcMnNCItem {
+  position: absolute;
+  top: 279px;
+  left: 277px;
+  max-height: 100%;
+  width: 300px;
+}
+.danhSchTtCCcMnNCInner {
+  position: absolute;
+  top: 279px;
+  left: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #faf9f9;
+  width: 1920px;
+  height: 435px;
+}
+.danhSchTtCCcMnNCChild1,
+.danhSchTtCCcMnNCChild2,
+.ellipseIcon {
+  position: absolute;
+  top: 423px;
+  left: 167px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.danhSchTtCCcMnNCChild1,
+.danhSchTtCCcMnNCChild2 {
+  left: 393px;
+}
+.danhSchTtCCcMnNCChild2 {
+  left: 619px;
+}
+.danhSchTtCCcMnNCChild3,
+.danhSchTtCCcMnNCChild4,
+.danhSchTtCCcMnNCChild5,
+.danhSchTtCCcMnNCChild6 {
+  position: absolute;
+  top: 423px;
+  left: 845px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.danhSchTtCCcMnNCChild4,
+.danhSchTtCCcMnNCChild5,
+.danhSchTtCCcMnNCChild6 {
+  left: 1071px;
+}
+.danhSchTtCCcMnNCChild5,
+.danhSchTtCCcMnNCChild6 {
+  left: 1297px;
+}
+.danhSchTtCCcMnNCChild6 {
+  left: 1523px;
+}
+.cmHngCho {
+  position: absolute;
+  top: 336px;
+  left: 167px;
+}
+.bnhTrngCun,
+.combo,
+.lu2Ngn,
+.ung {
+  position: absolute;
+  top: 601px;
+  left: 194px;
+}
+.bnhTrngCun,
+.lu2Ngn,
+.ung {
+  left: 395px;
+}
+.bnhTrngCun,
+.ung {
+  left: 863px;
+}
+.bnhTrngCun {
+  left: 1036px;
+}
+.mnTrngMing,
+.nNhanh,
+.nhngLu {
+  position: absolute;
+  top: 601px;
+  left: 604px;
+}
+.mnTrngMing,
+.nNhanh {
+  left: 1484px;
+}
+.nNhanh {
+  left: 1287px;
+}
+.remixIconsfillfinanceshopp {
+  position: absolute;
+  top: 35px;
+  left: 1402px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+}
+.div {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-weight: 600;
+}
+.groupParent {
+  position: absolute;
+  top: 33px;
+  left: 1446px;
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  color: var(--color-white);
+}
+.danhSchTtCCcMnNC {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+  height: 2931px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-6xl);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}
