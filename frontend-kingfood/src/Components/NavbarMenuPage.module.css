@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
-    padding: 10px;
+    padding: 20px; /* Tăng padding tổng thể */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -16,11 +16,11 @@
 }
 
 .navIcon {
-    font-size: 24px;
+    font-size: 40px; /* Tăng kích thước font icon */
     margin-bottom: 5px;
     background-color: #e0e0e0;
     border-radius: 50%;
-    padding: 10px;
+    padding: 10px; /* Tăng padding cho icon */
 }
 
 .navItem:hover {
@@ -32,13 +32,13 @@
 }
 
 .largeIcon {
-    font-size: 32px; /* Kích thước lớn hơn */
+    font-size: 48px; /* Tăng kích thước lớn hơn */
 }
 
 .roundIcon {
     border-radius: 50%; /* Hình dạng hình tròn */
-    width: 50px;
-    height: 50px;
+    width: 80px; /* Tăng kích thước hình tròn */
+    height: 80px; /* Tăng kích thước hình tròn */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,19 +46,6 @@
 }
 
 .navTitle {
-    font-size: 16px; /* Tiêu đề lớn hơn */
-    margin-left: 10px; /* Khoảng cách với icon */
-}
-
-/* Thêm class cho icon cụ thể */
-.navIcon.icon1 {
-    color: #ff6347; /* Màu đỏ */
-}
-
-.navIcon.icon2 {
-    color: #1e90ff; /* Màu xanh dương */
-}
-
-.navIcon.icon3 {
-    color: #ff69b4; /* Màu hồng */
+    font-size: 18px; /* Tiêu đề lớn hơn */
+    margin-left: 15px; /* Khoảng cách với icon */
 }
