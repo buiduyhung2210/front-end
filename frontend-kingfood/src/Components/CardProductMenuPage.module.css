@@ -1,32 +1,110 @@
 .cardContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cột mỗi hàng */
-    gap: 20px; /* Khoảng cách giữa các card */
-    justify-content: center; /* Căn giữa grid container */
-    padding: 20px; /* Khoảng cách giữa container và các card */
-    margin: 0 auto; /* Căn giữa container */
-  }
-  
-  .cardContainer .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    height: 400px; /* Đặt chiều cao mong muốn của mỗi card */
-    width: 180px; /* Đặt chiều rộng mong muốn của mỗi card */
-    border: 1px solid #ccc; /* Thêm viền cho card */
-  }
-  
-  .cardContainer .card .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .cardImg {
-    padding: 10px; /* Khoảng cách xung quanh hình ảnh */
-    border-radius: 18px; /* Bo tròn 4 góc */
-    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước bên ngoài */
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 350px;
+  width: 400px;
+  border: 1px solid #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #00f;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+.cardImg {
+  padding: 10px;
+  border-radius: 18px;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Adjusted here */
+  height: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Adjusted here */
+}
+
+.cardTitle {
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ratingBadge {
+  background-color: #f00;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+.cardTextRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Adjusted here */
+}
+
+.cardText {
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px; /* Adjusted here */
+}
+
+.footerLeft {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.footerRight {
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.status {
+  color: #f00;
+  margin: 0;
+}
