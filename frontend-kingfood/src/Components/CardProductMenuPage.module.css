@@ -1,3 +1,18 @@
+.cardContainer,
+.container,
+.card,
+.discountBadge,
+.cardBody,
+.cardHeader,
+.cardTitle,
+.ratingBadge,
+.cardText,
+.footerLeft,
+.footerRight,
+.status {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -27,8 +42,9 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #00f;
-  color: #fff;
+  background-color: #4285F4;
+  color: #ffffff;
+  font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.8em;
@@ -44,7 +60,7 @@
 .cardBody {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Adjusted here */
+  justify-content: flex-start;
   height: 50%;
   padding: 10px;
   box-sizing: border-box;
@@ -55,7 +71,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Adjusted here */
+  margin-bottom: 5px;
 }
 
 .cardTitle {
@@ -72,39 +88,47 @@
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.8em;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #FFFFFF; /* Cập nhật màu sắc */
 }
 
 .cardTextRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Adjusted here */
+  margin-bottom: 5px;
 }
 
 .cardText {
   font-size: 0.9em;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #A6A6A6; /* Cập nhật màu sắc */
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5px; /* Adjusted here */
+  margin-top: 5px;
 }
 
 .footerLeft {
   font-size: 0.9em;
-  font-weight: bold;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #A6A6A6; /* Cập nhật màu sắc */
 }
 
 .footerRight {
+  color: #000000;
+  font-weight: bold;
   font-size: 0.9em;
   text-align: right;
 }
 
 .status {
-  color: #f00;
+  color: #FF0101;
   margin: 0;
+  font-weight: bold; /* Cập nhật độ đậm */
 }

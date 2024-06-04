@@ -1,26 +1,26 @@
 import React from 'react';
 import styles from './NavbarMenuPage.module.css';
-import { MdLocalDining } from "react-icons/md";
-import { CiDeliveryTruck, CiBeerMugFull } from "react-icons/ci";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils, faBeerMugEmpty, faTruck } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarMenuPage = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navItem}>
         <div className={`${styles.roundIcon}`}>
-          <MdLocalDining className={`${styles.navIcon} ${styles.largeIcon} ${styles.icon1}`} />
+          <FontAwesomeIcon icon={faUtensils} className={`${styles.navIcon} ${styles.largeIcon}`} style={{"--fa-primary-color": "#ffa654", "--fa-secondary-color": "#1f2398"}} />
         </div>
         <span className={styles.navTitle}>Ăn Uống</span>
       </div>
       <div className={styles.navItem}>
         <div className={`${styles.roundIcon}`}>
-          <CiBeerMugFull className={`${styles.navIcon} ${styles.largeIcon} ${styles.icon2}`} />
+          <FontAwesomeIcon icon={faBeerMugEmpty} className={`${styles.navIcon} ${styles.largeIcon}`} style={{color: "#63E6BE"}} />
         </div>
         <span className={styles.navTitle}>Nightlife</span>
       </div>
       <div className={styles.navItem}>
         <div className={`${styles.roundIcon}`}>
-          <CiDeliveryTruck className={`${styles.navIcon} ${styles.largeIcon} ${styles.icon3}`} />
+          <FontAwesomeIcon icon={faTruck} className={`${styles.navIcon} ${styles.largeIcon}`} style={{color: "#d73ad9"}} />
         </div>
         <span className={styles.navTitle}>Delivery</span>
       </div>
