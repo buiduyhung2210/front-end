@@ -1,3 +1,5 @@
+// CardProductMenuPage.js
+
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import ModalCardProductMenuPage from './ModalCardProductMenuPage';
@@ -32,7 +34,7 @@ function CardProductMenuPage() {
               </div>
               <div className={styles.cardTextRow}>
                 <div className={styles.cardText}>{item.description}</div>
-                <div className={styles.footerLeft}>{item.price}</div>
+                <div className={styles.footerLeft}>{`${item.price.toLocaleString()} Vnd / Set`}</div>
               </div>
               <div className={styles.cardFooter}>
                 <div className={styles.status}>{item.status}</div>

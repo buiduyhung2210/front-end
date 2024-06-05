@@ -1,0 +1,53 @@
+.back-text-container {
+    position: fixed;
+    top: 100px; /* Đảm bảo dòng text "GIỎ HÀNG" nằm dưới Navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Chiều rộng cố định là 250px */
+    background-color: #F8F8F8;
+    padding: 10px; /* Padding để tạo khoảng cách từ lề trái và phải */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000; /* Đảm bảo dòng text hiển thị trên top các phần tử khác */
+    text-align: center; /* Căn giữa dòng text */
+    cursor: pointer; /* Hiển thị con trỏ khi rê chuột vào */
+}
+
+.back-text {
+    color: #007bff;
+    font-size: 16px;
+    margin: 0; /* Loại bỏ margin mặc định của <p> */
+}
+
+.shopping-cart-menu-page {
+    margin-top: 70px; /* Để tránh bị che bởi Navbar */
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-table button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cart-table button:hover {
+    background-color: #c82333;
+}
