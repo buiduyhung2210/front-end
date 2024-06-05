@@ -2,14 +2,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #FAF9F9;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-wrap: nowrap; /* Đảm bảo các items không wrap thành nhiều hàng */
 }
 
 .navItem {
     display: flex;
-    flex-direction: row; /* Sắp xếp theo hàng */
+    flex-direction: column; /* Thay đổi từ row sang column */
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -20,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px; /* Giảm kích thước font icon */
+    font-size: 32px;
     background-color: #ffffff;
     border-radius: 50%;
     padding: 10px;
@@ -35,7 +36,7 @@
 }
 
 .largeIcon {
-    font-size: 36px; /* Giảm kích thước lớn hơn */
+    font-size: 36px;
 }
 
 .roundIcon {
@@ -53,5 +54,6 @@
 .navTitle {
     font-size: 15px;
     font-weight: bold;
-    margin-left: 15px; /* Khoảng cách giữa icon và tên */
+    margin-top: 10px; /* Thêm khoảng cách phía trên tiêu đề */
+    text-align: center; /* Căn giữa tiêu đề */
 }
