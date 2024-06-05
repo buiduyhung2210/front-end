@@ -15,6 +15,7 @@ function AfterLoginNavbar(props) {
             axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
             ).then(response => {
                 console.log(response.data);
+                localStorage.setItem('uuid',null);
                 navigate('/')
             })
             .catch(error => {

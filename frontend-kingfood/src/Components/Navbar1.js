@@ -6,12 +6,8 @@ function Navbar1() {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const handleKINGFOODClick = () => {
-        const isLoggedIn = false; 
-        if (isLoggedIn) {
-            navigate('/afterlogin'); 
-        } else {
-            alert('Vui lòng đăng nhập trước khi tiếp tục!'); 
-        }
+        navigate('/afterlogin'); 
+
     };
     const handlelogout = (e) => {
         e.preventDefault();
@@ -19,12 +15,14 @@ function Navbar1() {
             axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
             ).then(response => {
                 console.log(response.data);
-                navigate('/')
+                localStorage.setItem('uuid',null);
+                navigate('/');
             })
             .catch(error => {
                 console.error('There was an error!', error);
                 setErrors({ submit: 'Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.' });
             });
+            
     };
 
     return (

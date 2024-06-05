@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
+import ModalCardProductMenuPage from './ModalCardProductMenuPage';
 import styles from './CardProductMenuPage.module.css';
 import cardData from '../Datas/CardProductMenuPageData';
 
 function CardProductMenuPage() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleShowModal = (product) => {
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <div className='container'>
       <div className={styles.cardContainer}>
         {cardData.map(item => (
-          <Card key={item.id} className={styles.card}>
+          <Card key={item.id} className={styles.card} onClick={() => handleShowModal(item)}>
             <div className={styles.discountBadge}>10% OFF</div>
             <Card.Img className={styles.cardImg} variant="top" src={item.imgSrc} />
             <Card.Body className={styles.cardBody}>
@@ -28,6 +42,13 @@ function CardProductMenuPage() {
           </Card>
         ))}
       </div>
+      {selectedProduct && (
+        <ModalCardProductMenuPage
+          show={showModal}
+          handleClose={handleCloseModal}
+          product={selectedProduct}
+        />
+      )}
     </div>
   );
 }
