@@ -7,16 +7,20 @@ import Profile from './Pages/Profile';
 import Home from './Pages/Home';
 import AfterLoginPage from './Pages/AfterLoginPage';
 import MenuPage from './Pages/MenuPage';
+import AdminPage from './Pages/AdminPage';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
      <Router>
      <Routes>
-      <Route path="/MenuPage" element={<MenuPage />} />
-      <Route path="/afterlogin" element={<AfterLoginPage />} />
+        <Route path="/MenuPage" element={<MenuPage />} />
+        <Route path="/afterlogin" element={<AfterLoginPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
