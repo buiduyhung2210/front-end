@@ -1,0 +1,92 @@
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Styles */
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* New Item Form Styles */
+  .newItem, .item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input and Select Styles */
+  .newItem input, .item input, .newItem select, .item select {
+    width: calc(100% - 20px);
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  /* Button Styles */
+  .newItem button, .item button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px;
+  }
+  
+  .newItem button:hover, .item button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .item button.delete {
+    background-color: #dc3545;
+  }
+  
+  .item button.delete:hover {
+    background-color: #c82333;
+  }
+  
+  /* List Styles */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Item Property Styles */
+  .item span {
+    padding: 5px 0;
+    color: #555;
+  }
+  
+  .item span.label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+.result span {
+    padding: 10px;
+}
+  
