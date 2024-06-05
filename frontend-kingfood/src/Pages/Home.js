@@ -48,7 +48,7 @@ function PlaceProps({ title, desc }) {
     );
 }
 
-export default function Home () {
+const Home = () => {
     return (
        <div className={styles.container}>
             <div>
@@ -86,5 +86,7 @@ export default function Home () {
                 <Footer />
             </div>
        </div> 
-    )
-}
+    );
+};
+
+export default Home;

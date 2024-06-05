@@ -1,0 +1,57 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+    display: flex;
+    flex-direction: row; /* Sắp xếp theo hàng */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.navIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px; /* Giảm kích thước font icon */
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.navItem:hover {
+    transform: scale(1.1);
+}
+
+.navItem:hover .navIcon {
+    color: #f00;
+}
+
+.largeIcon {
+    font-size: 36px; /* Giảm kích thước lớn hơn */
+}
+
+.roundIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navTitle {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 15px; /* Khoảng cách giữa icon và tên */
+}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import SignUpModal from './Signup';
 import SignInModal from './Signin';
 import ForgotPasswordModal from './ForgotPass';
 import ResetPasswordModal from './ResetPass';
 import SuccessPopup from './SuccessPopup';
-import { useNavigate } from 'react-router-dom';
 
 function Navbar(props) {
     const navigate = useNavigate();
@@ -15,6 +15,10 @@ function Navbar(props) {
     const [showResetPassword, setShowResetPassword] = useState(false);
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleMenuClick = () => {
+        navigate('/MenuPage'); // Đường dẫn của trang MenuPage
+    };
 
     const handleShowModal = (modalType) => {
         if (modalType === 'signup') {
@@ -82,14 +86,14 @@ function Navbar(props) {
                 <div>
                     <button onClick={() => handleShowModal('signin')}>Đăng nhập</button>
                     <button onClick={() => handleShowModal('signup')}>Đăng kí</button>
-                    <button>Đặt món</button>
+                    <button onClick={handleMenuClick}>Đặt món</button>
                 </div>
             </div>
             <div className={styles['navbar-content']}>
                 <h1>KINGFOOD</h1>
                 <h3>Khám phá những món ăn và đồ uống tốt nhất tại KINGFOOD</h3>
                 <div className={styles['form-container']}>
-                   <form className={styles['form-styles']}>
+                    <form className={styles['form-styles']}>
                         <div className={styles['container1']}>
                             <img src="/hugeicon.svg" alt="hugeicon" />
                             <p>KINGFOOD, số 1 Hùng Vương, Ba Đình</p>
@@ -100,8 +104,8 @@ function Navbar(props) {
                             <img src="/group-261.svg" alt="search" />
                             <input placeholder="Tìm kiếm nhà hàng hoặc món ăn..." />
                         </div>
-                    </form> 
-                </div>   
+                    </form>
+                </div>
             </div>
 
             <SignUpModal show={showModal} handleClose={handleCloseModal} handleLogin={handleLogin} />

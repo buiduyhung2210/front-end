@@ -1,0 +1,134 @@
+.cardContainer,
+.container,
+.card,
+.discountBadge,
+.cardBody,
+.cardHeader,
+.cardTitle,
+.ratingBadge,
+.cardText,
+.footerLeft,
+.footerRight,
+.status {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 350px;
+  width: 400px;
+  border: 1px solid #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4285F4;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+.cardImg {
+  padding: 10px;
+  border-radius: 18px;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.cardTitle {
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ratingBadge {
+  background-color: #f00;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #FFFFFF; /* Cập nhật màu sắc */
+}
+
+.cardTextRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.cardText {
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #A6A6A6; /* Cập nhật màu sắc */
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.footerLeft {
+  font-size: 0.9em;
+  font-weight: bold; /* Cập nhật độ đậm */
+  color: #A6A6A6; /* Cập nhật màu sắc */
+}
+
+.footerRight {
+  color: #000000;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.status {
+  color: #FF0101;
+  margin: 0;
+  font-weight: bold; /* Cập nhật độ đậm */
+}
