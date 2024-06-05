@@ -5,7 +5,7 @@ const cardData = [
     imgSrc: '/lauvibo.png',
     rating: 4.2,
     description: 'Lẩu 2 ngăn',
-    price: '1.300.000 Vnd / Set',
+    price: 1300000, // Giá trị số
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -15,7 +15,7 @@ const cardData = [
     imgSrc: '/laucuasong.png',
     rating: 4.2,
     description: 'Lẩu 2 Ngăn',
-    price: '1.300.000 Vnd / Set',
+    price: 900000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -25,7 +25,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 55000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -35,7 +35,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -45,7 +45,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -55,7 +55,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -65,7 +65,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -75,7 +75,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },
@@ -85,7 +85,7 @@ const cardData = [
     imgSrc: '/lau6nguoi.png',
     rating: 4.2,
     description: 'Đồ Ăn Nhanh',
-    price: '100.000 Vnd / Set',
+    price: 100000,
     status: 'Tạm dừng',
     time: '10 phút'
   },  
