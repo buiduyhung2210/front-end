@@ -124,6 +124,10 @@
     margin: 10px;
 }
 
+.container1 p {
+    margin-top: 15px;
+}
+
 @media (max-width: 768px) {
     .form-styles {
         flex-direction: column;

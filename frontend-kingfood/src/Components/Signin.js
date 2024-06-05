@@ -3,7 +3,7 @@ import styles from './Signin.module.css';
 import { useNavigate } from 'react-router-dom';
 import SuccessSignin from './SuccessSignin';
 
-const SignInModal = ({ show, handleClose, handleForgotPasswordClick }) => {
+const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowModal }) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -72,7 +72,7 @@ const SignInModal = ({ show, handleClose, handleForgotPasswordClick }) => {
                     {errors.termsAccepted && <p className={styles.error}>{errors.termsAccepted}</p>}
                     <button type="submit" disabled={!termsAccepted}>Đăng nhập</button>
                     <div className={styles['signup']}>
-                        <p>Chưa có tài khoản? Đăng ký ngay</p>
+                        <p onClick={() => handleShowModal('signup')}>Chưa có tài khoản? Đăng ký ngay</p>
                     </div>
                     <div className={styles['login']}>
                         <p onClick={handleForgotPasswordClick}>Quên mật khẩu? Đổi mật khẩu ngay</p>

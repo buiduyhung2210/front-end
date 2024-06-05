@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styles from './Signup.module.css';
 import SuccessSignup from './SuccessSignup';
 
-const SignUpModal = ({ show, handleClose }) => {
-    const [name, setName] = useState('');
+const SignUpModal = ({ show, handleClose, handleShowModal }) => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,7 +14,8 @@ const SignUpModal = ({ show, handleClose }) => {
 
     const validate = () => {
         const newErrors = {};
-        if (!name) newErrors.name = 'Họ và tên không được để trống';
+        if (!firstName) newErrors.firstName = 'Họ không được để trống';
+        if (!lastName) newErrors.lastName = 'Tên không được để trống';
         if (!email) newErrors.email = 'Email không được để trống';
         else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email không hợp lệ';
         if (!password) newErrors.password = 'Mật khẩu không được để trống';
@@ -37,7 +39,7 @@ const SignUpModal = ({ show, handleClose }) => {
 
     const handleSuccessSignupClose = () => {
         setShowSuccessSignup(false);
-        handleClose();  // Close the SignInModal
+        handleClose();  // Close the SignUpModal
     };
 
     if (!show) return null;
@@ -49,11 +51,18 @@ const SignUpModal = ({ show, handleClose }) => {
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Họ và tên"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Họ"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                     />
-                    {errors.name && <p className={styles.error}>{errors.name}</p>}
+                    {errors.firstName && <p className={styles.error}>{errors.firstName}</p>}
+                    <input
+                        type="text"
+                        placeholder="Tên"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                    {errors.lastName && <p className={styles.error}>{errors.lastName}</p>}
                     <input
                         type="email"
                         placeholder="Email"
@@ -88,8 +97,8 @@ const SignUpModal = ({ show, handleClose }) => {
                     </div>
                     {errors.termsAccepted && <p className={styles.error}>{errors.termsAccepted}</p>}
                     <button type="submit" disabled={!termsAccepted}>Tạo tài khoản</button>
-                    <div className={styles['login']}>
-                        <p>Đã có tài khoản? Đăng nhập ngay</p>
+                    <div className={styles.login}>
+                        <p onClick={() => handleShowModal('signin')}>Đã có tài khoản? Đăng nhập ngay</p>
                     </div>
                 </form>
             </div>
