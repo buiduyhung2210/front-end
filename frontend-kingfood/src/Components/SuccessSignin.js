@@ -8,7 +8,7 @@ const SuccessPopup = ({ handleClose, show }) => {
         <div className={showHideClassName}>
             <section className={styles['popup-main']}>
                 <img src="/Vector.svg" alt="greenticket" />
-                <h3>Cập nhật thông tin thành công!</h3>
+                <h3>Đăng nhập thành công!</h3>
                 <p>Vui lòng ấn "Tiếp tục" để truy cập website</p>
                 <button className={styles['continue-buttons']} onClick={handleClose}>Tiếp tục</button>
             </section>

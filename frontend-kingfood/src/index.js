@@ -2,14 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-//import Home from './Pages/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Profile from './Pages/Profile';
-
+import Home from './Pages/Home';
+import AfterLoginPage from './Pages/AfterLoginPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Profile />
+     <Router>
+     <Routes>
+      <Route path="/afterlogin" element={<AfterLoginPage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Home />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

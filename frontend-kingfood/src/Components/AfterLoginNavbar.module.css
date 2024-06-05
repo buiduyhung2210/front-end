@@ -19,18 +19,21 @@
 }
 
 .navbar-top button {
-    background-color: transparent;
+    background-color: #E34949;
     border: 1px solid white;
     color: white;
-    padding: 8px 40px;
-    margin-left: 10px;
+    padding: 8px 16px;
+    margin-left: 1050px;
     cursor: pointer;
-    border-radius: 4px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: none; 
+    outline: none; 
 }
 
 .navbar-top button:hover {
-    background-color: #F04141;
-    color: black;
+    opacity: 0.9;
 }
 
 .navbar-content {
@@ -122,6 +125,16 @@
     width: 24px;
     height: 24px;
     margin: 10px;
+}
+
+.navbar-top img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.navbar-top .name {
+    margin-right: 20px;
 }
 
 @media (max-width: 768px) {

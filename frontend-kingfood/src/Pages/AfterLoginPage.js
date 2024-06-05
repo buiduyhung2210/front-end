@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
+import AfterLoginNavbar from '../Components/AfterLoginNavbar';
 import Footer from '../Components/Footer';
 import { ListsData } from '../Datas/ListsData';
 import { OptionDatas } from '../Datas/OptionDatas';
@@ -52,7 +52,7 @@ export default function Home () {
     return (
        <div className={styles.container}>
             <div>
-                <Navbar />
+                <AfterLoginNavbar />
             </div>
             <div className={styles['option-container']}>
                 {OptionDatas.map((items) => (

@@ -1,29 +1,34 @@
-import React from 'react'
-import styles from './Navbar1.module.css'
+import React from 'react';
+import styles from './AfterLoginNavbar.module.css';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar1() {
+function AfterLoginNavbar(props) {
     const navigate = useNavigate();
-    const handleKINGFOODClick = () => {
-        const isLoggedIn = false; 
-        if (isLoggedIn) {
-            navigate('/afterlogin'); 
-        } else {
-            alert('Vui lòng đăng nhập trước khi tiếp tục!'); 
-        }
+
+    const handleProfileClick = () => {
+        navigate('/profile');
     };
 
     return (
         <div className={styles.navbar}>
             <div className={styles['navbar-top']}>
-                <h3 onClick={handleKINGFOODClick}>KINGFOOD</h3>
+                <h3>KINGFOOD</h3>
+                <div>
+                    <button>Đặt món</button>
+                </div>
+                <div className={styles['navbar-top']} onClick={handleProfileClick}>
+                    <img src="/ellipse-1@2x.png" alt="avatar" />
+                    <h3 className={styles['name']}>Kien</h3>
+                </div>
             </div>
             <div className={styles['navbar-content']}>
+                <h1>KINGFOOD</h1>
+                <h3>Khám phá những món ăn và đồ uống tốt nhất tại KINGFOOD</h3>
                 <div className={styles['form-container']}>
-                    <form className={styles['form-styles']}>
+                   <form className={styles['form-styles']}>
                         <div className={styles['container1']}>
                             <img src="/hugeicon.svg" alt="hugeicon" />
-                            <h5>KINGFOOD, số 1 Hùng Vương, Ba Đình</h5>
+                            <p>KINGFOOD, số 1 Hùng Vương, Ba Đình</p>
                             <img src="/group3.svg" alt="menu" />
                         </div>
                         <div className={styles['vertical-line']}></div>
@@ -34,15 +39,9 @@ function Navbar1() {
                     </form> 
                 </div>   
             </div>
-            <div className={styles['shop-cart']}>
-                <img src="/shop-cart.svg" alt="avatar" />
-            </div>
-            <div className={styles['navbar-top']}>
-                <img src="/ellipse-1@2x.png" alt="avatar" />
-                <h3 className={styles['name']}>Kien</h3>
-            </div>
         </div>
-    )
+    );
 }
 
-export default Navbar1
+
+export default AfterLoginNavbar;

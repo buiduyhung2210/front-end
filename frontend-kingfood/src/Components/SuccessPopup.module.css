@@ -54,3 +54,7 @@
 .popup-main button:hover {
     opacity: 0.9;
 }
+
+.popup-main h3, .popup-main p{
+    color: black !important;
+}
