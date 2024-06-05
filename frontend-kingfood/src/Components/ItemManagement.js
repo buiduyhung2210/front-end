@@ -11,6 +11,7 @@ function ItemManagement() {
     cost: '',
     description: '',
     status: '',
+    image: '',
     category: { categoryId: '', categoryName: '' }
   });
   const [editingItem, setEditingItem] = useState(null);
@@ -20,6 +21,7 @@ function ItemManagement() {
     cost: '',
     description: '',
     status: '',
+    image: '',
     category: { categoryId: '', categoryName: '' }
   });
 
@@ -58,6 +60,7 @@ function ItemManagement() {
         cost: newItem.cost,
         description: newItem.description,
         status: newItem.status,
+        image: newItem.image,
         category: newItem.category
       });
       console.log('Added item:', response.data); // Debugging
@@ -68,6 +71,7 @@ function ItemManagement() {
         cost: '',
         description: '',
         status: '',
+        image: '',
         category: { categoryId: '', categoryName: '' }
       });
     } catch (error) {
@@ -91,6 +95,7 @@ function ItemManagement() {
       cost: '',
       description: '',
       status: '',
+      image: '',
       category: { categoryId: '', categoryName: '' }
     });
   };
@@ -107,6 +112,7 @@ function ItemManagement() {
         cost: '',
         description: '',
         status: '',
+        image: '',
         category: { categoryId: '', categoryName: '' }
       });
     } catch (error) {
@@ -159,6 +165,13 @@ function ItemManagement() {
           onChange={(e) => setNewItem({ ...newItem, status: e.target.value })}
           placeholder="Tình trạng"
         />
+        {/* Input field for image */}
+        <input
+          type="text"
+          value={newItem.image}
+          onChange={(e) => setNewItem({ ...newItem, image: e.target.value })}
+          placeholder="Đường dẫn hình ảnh"
+        />
         {/* Select dropdown for category */}
         <select
           value={newItem.category.categoryId}
@@ -209,6 +222,12 @@ function ItemManagement() {
                     value={editedItem.status}
                     onChange={(e) => setEditedItem({ ...editedItem, status: e.target.value })}
                   />
+                  {/* Input field for image */}
+                  <input
+                    type="text"
+                    value={editedItem.image}
+                    onChange={(e) => setEditedItem({ ...editedItem, image: e.target.value })}
+                  />
                   {/* Select dropdown for category */}
                   <select
                     value={editedItem.category.categoryId}
@@ -229,13 +248,14 @@ function ItemManagement() {
                   <button onClick={cancelEditing}>Hủy</button>
                 </div>
               ) : (
-                <div class className={styles.result}>
+                <div className={styles.result}>
                   {/* Display other item properties */}
                   <span>Tên Món: {item.itemName}</span>
                   <span>Số lượng: {item.quantity}</span>
                   <span>Giá: {item.cost}</span>
                   <span>Mô tả: {item.description}</span>
                   <span>Tình trạng: {item.status}</span>
+                  <span>Hình ảnh: <img src={item.image} alt={item.itemName} width="50" /></span>
                   <span>Danh mục: {item.category.categoryName}</span>
                   <button onClick={() => startEditing(item)}>Chỉnh sửa</button>
                   <button className={styles.delete} onClick={() => deleteItem(item.itemId)}>Xóa</button>
