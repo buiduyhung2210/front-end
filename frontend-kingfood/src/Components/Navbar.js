@@ -108,8 +108,8 @@ function Navbar(props) {
                 </div>
             </div>
 
-            <SignUpModal show={showModal} handleClose={handleCloseModal} handleLogin={handleLogin} />
-            <SignInModal show={showSignIn} handleClose={handleCloseModal} handleForgotPasswordClick={() => handleShowModal('forgotpassword')} />
+            <SignUpModal show={showModal} handleClose={handleCloseModal} handleLogin={handleLogin} handleShowModal={handleShowModal}/>
+            <SignInModal show={showSignIn} handleClose={handleCloseModal} handleForgotPasswordClick={() => handleShowModal('forgotpassword')} handleShowModal={handleShowModal} />
             <ForgotPasswordModal show={showForgotPassword} handleClose={handleCloseModal} onEmailSent={handleEmailSent} />
             <ResetPasswordModal show={showResetPassword} handleClose={handleCloseModal} onPasswordReset={handlePasswordReset} />
             <SuccessPopup show={showSuccessPopup} handleClose={handleCloseModal} />
