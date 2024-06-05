@@ -6,7 +6,7 @@ import styles from '../Styles/Profile.module.css';
 import { PaymentDatas } from '../Datas/PaymentDatas';
 import Popup from '../Components/Popup';
 import SuccessPopup from '../Components/SuccessPopup';
-
+import axios from 'axios';
 function PaymentForms({ image, title, onClick }) {
     return (
         <div className={styles['place-item']} onClick={onClick}>
@@ -21,10 +21,11 @@ export default function Profile() {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [showPaymentPopup, setShowPaymentPopup] = useState(false);
     const [formData, setFormData] = useState({
-        name: 'Hoang Tien Trung Kien',
-        email: 'hoangtientrungkien95@gmail.com',
-        phone: '',
-        address: ''
+        firstName: localStorage.getItem('userFname'),
+        lastName: localStorage.getItem('userLname'),
+        email: localStorage.getItem('userEmail'),
+        // phone: '',
+        // address: ''
     });
     const [paymentData, setPaymentData] = useState({
         bankName: '',
@@ -54,18 +55,19 @@ export default function Profile() {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.name) newErrors.name = 'Name is required';
+        if (!formData.firstName) newErrors.firstName = 'Name is required';
+        if (!formData.lastName) newErrors.lastName = 'Name is required';
         if (!formData.email) {
             newErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email address is invalid';
         }
-        if (!formData.phone) {
-            newErrors.phone = 'Phone is required';
-        } else if (!/^\d{10}$/.test(formData.phone)) {
-            newErrors.phone = 'Phone number is invalid';
-        }
-        if (!formData.address) newErrors.address = 'Address is required';
+        // if (!formData.phone) {
+        //     newErrors.phone = 'Phone is required';
+        // } else if (!/^\d{10}$/.test(formData.phone)) {
+        //     newErrors.phone = 'Phone number is invalid';
+        // }
+        // if (!formData.address) newErrors.address = 'Address is required';
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -86,8 +88,24 @@ export default function Profile() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            setShowPopup(false);
-            setShowSuccessPopup(true);
+            axios.put('http://localhost:8080/updateCustomer',{
+                'customerId': String(localStorage.getItem('userId')),
+                'firstName': String(formData.firstName),
+                'lastname': String(formData.lastName),
+                'email': String(formData.email),
+                'password': String(localStorage.getItem('userPassword'))
+            }).then(
+                response => {
+                    console.log('user info undated successfully:', response.data);
+                    saveUserInfo();
+                    setShowPopup(false);
+                    setShowSuccessPopup(true);
+                }
+            ).catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi. Vui lòng thử lại.' });
+            });
+            
         }
     };
 
@@ -99,16 +117,30 @@ export default function Profile() {
         }
     };
 
+    const saveUserInfo = (e) => {
+        axios.get('http://localhost:8080//viewCustomer/' + localStorage.getItem('userId')).then(
+            response => {
+                console.log('User Info:',response.data);
+                const user = response.data;
+                localStorage.setItem('userFname',user.firstName);
+                localStorage.setItem('userLname',user.lastname);
+                localStorage.setItem('userEmail',user.email);
+                localStorage.setItem('userImage',user.image);
+                localStorage.setItem('userPassword',user.password);
+                console.log('User info saved in local storage');
+            }
+        )
+    }
+
     return (
         <div>
             <Navbar1 />
-
             <div className={styles['profile-form']}>
                 <div className={styles['avatar-form']}>
                     <img src="/ellipse-1@2x.png" alt="avatar" />
                 </div>
                 <div className={styles['name-form']}>
-                    <p>Hoàng Tiến Trung Kiên</p>
+                    <p>{localStorage.getItem('userLname') + ' ' +localStorage.getItem('userFname')}</p>
                     <div className={styles['place-form']}>
                         <img src="/Subtract.svg" alt="logo-place" />
                         <p>Việt Nam</p>
@@ -138,16 +170,27 @@ export default function Profile() {
                     <img src="/ellipse-1@2x.png" alt="avatar" />
                 </div>
                 <form className={styles['formPro-setting']} onSubmit={handleSubmit}>
-                    <label htmlFor="name">
+                    <label htmlFor="lastName">
                         <input
                             type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
+                            id="lastName"
+                            name="lastName"
+                            value={formData.lastName}
                             onChange={handleInputChange}
                         />
                     </label>
-                    {errors.name && <p className={styles.error}>{errors.name}</p>}
+                    
+                    {errors.lastName && <p className={styles.error}>{errors.lastName}</p>}
+                    <label htmlFor="fisrtName">
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    {errors.firstName && <p className={styles.error}>{errors.firstName}</p>}
                     <label htmlFor="email">
                         <input
                             type="email"
@@ -158,7 +201,7 @@ export default function Profile() {
                         />
                     </label>
                     {errors.email && <p className={styles.error}>{errors.email}</p>}
-                    <label htmlFor="phone">
+                    {/* <label htmlFor="phone">
                         <input
                             type="tel"
                             id="phone"
@@ -178,7 +221,7 @@ export default function Profile() {
                             onChange={handleInputChange}
                             placeholder='Địa chỉ'
                         />
-                    </label>
+                    </label> */}
                     {errors.address && <p className={styles.error}>{errors.address}</p>}
                     <div className={styles['modal-buttons']}>
                         <button className={styles['unsuccess-buttons']} type="button" onClick={togglePopup}>Hủy</button>

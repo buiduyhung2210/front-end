@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Signin.module.css';
 import { useNavigate } from 'react-router-dom';
 import SuccessSignin from './SuccessSignin';
-
+import axios from 'axios';
 const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowModal }) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -10,7 +10,13 @@ const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowM
     const [errors, setErrors] = useState({});
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [showSuccessSignin, setShowSuccessSignin] = useState(false);
-
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        image: '',
+        // phone: '',
+        // address: ''
+    });
     const validate = () => {
         const newErrors = {};
         if (!email) newErrors.email = 'Email không được để trống';
@@ -20,12 +26,58 @@ const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowM
         return newErrors;
     };
 
+    const saveUserInfo = (e) => {
+        axios.get('http://localhost:8080//viewCustomer/' + localStorage.getItem('userId')
+    ).then(
+            response => {
+                console.log('User Info:',response.data);
+                const user = response.data;
+                localStorage.setItem('userFname',user.firstName);
+                localStorage.setItem('userLname',user.lastname);
+                localStorage.setItem('userEmail',user.email);
+                localStorage.setItem('userImage',user.image);
+                localStorage.setItem('userPassword',user.password);
+                console.log('User info saved in local storage');
+            }
+    ).catch(error => {
+        console.error('There was an error!', error);
+        setErrors({ submit: 'Đã xảy ra lỗi. Vui lòng thử lại.' });
+    });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const validationErrors = validate();
         if (Object.keys(validationErrors).length === 0) {
-            console.log('SignIn form submitted');
-            setShowSuccessSignin(true);
+            const qs = require('qs');
+            axios.post('http://localhost:8080/login',qs.stringify({
+                'email':email,
+                'password':password
+            })).then(response => {
+                console.log('Response data:', response.data); // Debug log
+                const responseString = response.data;
+                const uuidMatch = responseString.match(/uuid=([a-zA-Z0-9-]+)/);
+                const userIdMatch = responseString.match(/userId=([0-9-]+)/);
+                if (uuidMatch && uuidMatch[1]) {
+                    const uuid = uuidMatch[1];
+                    localStorage.setItem('uuid', uuid);
+                    console.log('UUID saved to localStorage:', uuid);
+                } else {
+                console.error('UUID không tồn tại trong phản hồi');
+                }
+                if (userIdMatch && userIdMatch[1]) {
+                    const userId = userIdMatch[1];
+                    localStorage.setItem('userId', userId);
+                    console.log('userID saved to localStorage:', userId);
+                    console.log('Đăng nhập thành công');
+                    setShowSuccessSignin(true);
+                } else {
+                    console.error('UUID không tồn tại trong phản hồi');
+                }
+        }).catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.' });
+            });
         } else {
             setErrors(validationErrors);
         }
@@ -34,6 +86,7 @@ const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowM
     const handleSuccessSigninClose = () => {
         setShowSuccessSignin(false);
         handleClose();  // Close the SignInModal
+        saveUserInfo();
         navigate('/afterlogin');
     };
 

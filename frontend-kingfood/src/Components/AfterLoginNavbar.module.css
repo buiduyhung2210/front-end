@@ -32,6 +32,20 @@
     outline: none; 
 }
 
+.navbar-logout {
+    background-color: #E34949;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: none; 
+    outline: none; 
+}
+
 .navbar-top button:hover {
     opacity: 0.9;
 }

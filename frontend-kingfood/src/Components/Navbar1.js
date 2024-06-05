@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './Navbar1.module.css'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 function Navbar1() {
     const navigate = useNavigate();
+    const [errors, setErrors] = useState({});
     const handleKINGFOODClick = () => {
         const isLoggedIn = false; 
         if (isLoggedIn) {
@@ -11,6 +12,19 @@ function Navbar1() {
         } else {
             alert('Vui lòng đăng nhập trước khi tiếp tục!'); 
         }
+    };
+    const handlelogout = (e) => {
+        e.preventDefault();
+            const qs = require('qs');
+            axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
+            ).then(response => {
+                console.log(response.data);
+                navigate('/')
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.' });
+            });
     };
 
     return (
@@ -40,6 +54,9 @@ function Navbar1() {
             <div className={styles['navbar-top']}>
                 <img src="/ellipse-1@2x.png" alt="avatar" />
                 <h3 className={styles['name']}>Kien</h3>
+            </div>
+            <div className={styles['navbar-logout']} onClick={handlelogout}>
+                    Đăng xuất
             </div>
         </div>
     )
