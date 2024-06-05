@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './NavbarOptionMenuPage.module.css';
+import { NavbarOptionMenuPageData } from '../Datas/NavbarOptionMenuPageData';
 
-const NavbarOptionMenuPage = ({ image, title }) => {
+const NavbarOptionMenuPage = () => {
   return (
     <div className={styles.navbar}>
-        <img src={image} alt={title} className={`${styles.navIcon} ${styles.largeIcon}`} />
-        <span className={styles.navTitle}>{title}</span>
+      {NavbarOptionMenuPageData.map((item) => (
+        <div key={item.id} className={styles.navItem}>
+          <img src={item.image} alt={item.title} className={`${styles.navIcon} ${styles.largeIcon}`} />
+          <span className={styles.navTitle}>{item.title}</span>
+        </div>
+      ))}
     </div>
   );
 };
