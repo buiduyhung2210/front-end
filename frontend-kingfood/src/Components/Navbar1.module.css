@@ -1,6 +1,6 @@
 .navbar {
     display: grid;
-    grid-template-columns: 15% 50% 10% 15% 10%;
+    grid-template-columns: 15% 50% 10% 10% 15%;
     margin-left: 5%;
     margin-right: 5%;
     height: 119px;

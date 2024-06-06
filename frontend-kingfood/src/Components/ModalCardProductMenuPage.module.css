@@ -1,0 +1,62 @@
+.modalBody {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px; /* Đặt chiều cao cố định cho container */
+  }
+  
+  .productImage {
+    width: 100%; /* Đặt kích thước chiều rộng theo container */
+    height: 100%; /* Đặt kích thước chiều cao theo container */
+    object-fit: cover; /* Giữ nguyên tỷ lệ và lấp đầy khung ảnh */
+    object-position: center; /* Căn giữa hình ảnh trong khung */
+    border-radius: 5px;
+  }
+  
+  .infoContainer {
+    flex: 2;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .quantityContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+  }
+  
+  .quantityContainer label {
+    margin-right: 0.5em;
+  }
+  
+  .quantityInput {
+    width: 60px;
+    padding: 0.5em;
+    text-align: center;
+  }
+  
+  .descriptionContainer {
+    margin-top: 1em;
+  }
+  
+  .descriptionContainer label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .descriptionText {
+    background-color: #f5f5f5;
+    padding: 0.5em;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Giữ nguyên khoảng trắng và xuống dòng trong mô tả */
+  }
+  

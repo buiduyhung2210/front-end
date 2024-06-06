@@ -17,6 +17,11 @@
     transition: transform 0.2s;
 }
 
+.navItem img {
+    width: 150px;
+    height: 150px;
+}
+
 .navIcon {
     display: flex;
     justify-content: center;

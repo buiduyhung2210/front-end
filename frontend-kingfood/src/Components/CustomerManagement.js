@@ -3,14 +3,14 @@ import axios from 'axios';
 import styles from './CustomerManagement.module.css'; // Using CSS Module
 
 function CustomerManagement() {
-    const [customers, setCustomers] = useState([]);
-    const [newCustomer, setNewCustomer] = useState({ firstName: '', lastname: '', email: '', password: '' });
-    const [editingCustomer, setEditingCustomer] = useState(null);
-    const [editedCustomer, setEditedCustomer] = useState({ firstName: '', lastname: '', email: '', password: '' });
-  
-    useEffect(() => {
-      fetchCustomers();
-    }, []);
+  const [customers, setCustomers] = useState([]);
+  const [newCustomer, setNewCustomer] = useState({ firstName: '', lastname: '', email: '', password: '', image: '' });
+  const [editingCustomer, setEditingCustomer] = useState(null);
+  const [editedCustomer, setEditedCustomer] = useState({ firstName: '', lastname: '', email: '', password: '', image: '' });
+
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
 
   const fetchCustomers = async () => {
     try {
@@ -28,11 +28,12 @@ function CustomerManagement() {
         firstName: newCustomer.firstName,
         lastname: newCustomer.lastname,
         email: newCustomer.email,
-        password: newCustomer.password
+        password: newCustomer.password,
+        image: newCustomer.image,
       });
       console.log('Added customer:', response.data); // Debugging
       setCustomers([...customers, response.data]);
-      setNewCustomer({ firstName: '', lastname: '', email: '', password: '' });
+      setNewCustomer({ firstName: '', lastname: '', email: '', password: '', image: '' });
     } catch (error) {
       console.error('Error adding customer:', error);
       if (error.response) {
@@ -48,12 +49,13 @@ function CustomerManagement() {
       lastname: customer.lastname,
       email: customer.email,
       password: customer.password,
+      image: customer.image,
     });
   };
 
   const cancelEditing = () => {
     setEditingCustomer(null);
-    setEditedCustomer({ firstName: '', lastname: '', email: '', password: '' });
+    setEditedCustomer({ firstName: '', lastname: '', email: '', password: '', image: '' });
   };
 
   const saveEditing = async (id) => {
@@ -62,7 +64,7 @@ function CustomerManagement() {
       console.log('Updated customer:', { ...editedCustomer, customerId: id }); // Debugging
       fetchCustomers();
       setEditingCustomer(null);
-      setEditedCustomer({ firstName: '', lastname: '', email: '', password: '' });
+      setEditedCustomer({ firstName: '', lastname: '', email: '', password: '', image: '' });
     } catch (error) {
       console.error('Error updating customer:', error);
     }
@@ -106,6 +108,12 @@ function CustomerManagement() {
           onChange={(e) => setNewCustomer({ ...newCustomer, password: e.target.value })}
           placeholder="Mật khẩu"
         />
+        <input
+          type="text"
+          value={newCustomer.image}
+          onChange={(e) => setNewCustomer({ ...newCustomer, image: e.target.value })}
+          placeholder="URL Hình ảnh"
+        />
         <button onClick={addCustomer}>Thêm Khách hàng</button>
       </div>
       <ul>
@@ -138,6 +146,12 @@ function CustomerManagement() {
                     onChange={(e) => setEditedCustomer({ ...editedCustomer, password: e.target.value })}
                     placeholder="Mật khẩu"
                   />
+                  <input
+                    type="text"
+                    value={editedCustomer.image}
+                    onChange={(e) => setEditedCustomer({ ...editedCustomer, image: e.target.value })}
+                    placeholder="URL Hình ảnh"
+                  />
                   <button onClick={() => saveEditing(customer.customerId)}>Lưu</button>
                   <button onClick={cancelEditing}>Hủy</button>
                 </div>
@@ -146,6 +160,7 @@ function CustomerManagement() {
                   <span>Tên: {customer.firstName}</span>
                   <span>Họ: {customer.lastname}</span>
                   <span>Email: {customer.email}</span>
+                  {customer.image && <img src={customer.image} alt={customer.firstName} className={styles.customerImage} />}
                   <button className={styles.result_item} onClick={() => startEditing(customer)}>Chỉnh sửa</button>
                   <button className={styles.delete} onClick={() => deleteCustomer(customer.customerId)}>Xóa</button>
                 </div>

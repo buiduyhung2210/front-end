@@ -23,12 +23,16 @@ function AfterLoginNavbar(props) {
                 setErrors({ submit: 'Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.' });
             });
     };
+    const handleMenuPage = (e) => {
+        e.preventDefault();
+        navigate('/MenuPage');
+    }
     return (
         <div className={styles.navbar}>
             <div className={styles['navbar-top']}>
                 <h3>KINGFOOD</h3>
                 <div>
-                    <button>Đặt món</button>
+                    <button onClick={handleMenuPage}>Đặt món</button>
                 </div>
                 <div className={styles['navbar-top']} onClick={handleProfileClick}>
                     <img src="/ellipse-1@2x.png" alt="avatar" />
