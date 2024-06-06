@@ -76,3 +76,9 @@
     padding: 0 10px;
   }
   
+  .customerImage {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure it behaves like a block element */
+    margin-top: 10px; /* Optional: Add some spacing around the image */
+  }

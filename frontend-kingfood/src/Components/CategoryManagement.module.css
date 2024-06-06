@@ -112,3 +112,10 @@ background-color: #c82333;
 .result_item {
     margin-left: 140px !important;
 }
+
+.categoryImage {
+    width: 100px;  /* Adjust the width as needed */
+    height: auto;  /* Maintain aspect ratio */
+    display: block;  /* Optional: Ensure it behaves like a block element */
+    margin-top: 10px;  /* Optional: Add some spacing around the image */
+  }
