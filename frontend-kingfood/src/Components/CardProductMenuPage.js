@@ -1,12 +1,9 @@
-// CardProductMenuPage.js
-
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import ModalCardProductMenuPage from './ModalCardProductMenuPage';
 import styles from './CardProductMenuPage.module.css';
-import cardData from '../Datas/CardProductMenuPageData';
 
-function CardProductMenuPage() {
+const CardProductMenuPage = ({ items = [] }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -23,22 +20,20 @@ function CardProductMenuPage() {
   return (
     <div className='container'>
       <div className={styles.cardContainer}>
-        {cardData.map(item => (
-          <Card key={item.id} className={styles.card} onClick={() => handleShowModal(item)}>
+        {items.map(item => (
+          <Card key={item.itemId} className={styles.card} onClick={() => handleShowModal(item)}>
             <div className={styles.discountBadge}>10% OFF</div>
-            <Card.Img className={styles.cardImg} variant="top" src={item.imgSrc} />
+            <Card.Img className={styles.cardImg} variant="top" src={item.image} />
             <Card.Body className={styles.cardBody}>
               <div className={styles.cardHeader}>
-                <div className={styles.cardTitle}>{item.title}</div>
-                <div className={styles.ratingBadge}>{item.rating} ★</div>
+                <div className={styles.cardTitle}>{item.itemName}</div>
               </div>
               <div className={styles.cardTextRow}>
                 <div className={styles.cardText}>{item.description}</div>
-                <div className={styles.footerLeft}>{`${item.price.toLocaleString()} Vnd / Set`}</div>
+                <div className={styles.footerLeft}>{`${item.cost.toLocaleString()} Vnd`}</div>
               </div>
               <div className={styles.cardFooter}>
                 <div className={styles.status}>{item.status}</div>
-                <div className={styles.footerRight}>{item.time}</div>
               </div>
             </Card.Body>
           </Card>
@@ -53,6 +48,6 @@ function CardProductMenuPage() {
       )}
     </div>
   );
-}
+};
 
 export default CardProductMenuPage;

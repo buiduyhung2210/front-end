@@ -6,7 +6,7 @@ import { getProductDescription } from '../Datas/ModalCardProductMenuPageData'; /
 
 function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuantity }) {
   // Parse initial price from product
-  const initialPrice = product.price;
+  const initialPrice = product.cost;
   
   // State variables
   const [quantity, setQuantity] = useState(1);
@@ -15,13 +15,18 @@ function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuanti
 
   // Get description from external data source
   useEffect(() => {
-    const description = getProductDescription(product.id); // Assuming you have a function to get description
-    setDescription(description);
-  }, [product.id]);
+    // Check if product already has a description
+    if (product.description) {
+      setDescription(product.description);
+    } else {
+      const fetchedDescription = getProductDescription(product.itemId); // Assuming you have a function to get description
+      setDescription(fetchedDescription);
+    }
+  }, [product.itemId, product.description]);
 
   // Handle quantity change
   const handleQuantityChange = (e) => {
-    const newQuantity = parseInt(e.target.value);
+    const newQuantity = parseInt(e.target.value, 10); // Parse as base 10 integer
     setQuantity(newQuantity);
     setSubtotal(newQuantity * initialPrice);
   };
@@ -29,24 +34,24 @@ function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuanti
   // Handle adding to cart
   const handleAddToCart = () => {
     updateCartQuantity(quantity); // Gọi hàm updateCartQuantity từ props
-    console.log(`Added ${quantity} of ${product.title} to cart`);
+    console.log(`Added ${quantity} of ${product.itemName} to cart`);
     handleClose();
   };
 
   return (
     <Modal show={show} onHide={handleClose} size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>{product.title}</Modal.Title>
+        <Modal.Title>{product.itemName}</Modal.Title>
       </Modal.Header>
       <Modal.Body className={styles.modalBody}>
         <div className={styles.imageContainer}>
-          <img src={product.imgSrc} alt={product.title} className={styles.productImage} />
+          <img src={product.image} alt={product.itemName} className={styles.productImage} />
         </div>
         <div className={styles.infoContainer}>
-          <p><strong>Đánh giá:</strong> {product.rating}</p>
-          <p><strong>Đơn giá:</strong> {product.price.toLocaleString()} Vnd / Set</p>
+          <p><strong>Đơn giá:</strong> {product.cost.toLocaleString()} Vnd / Set</p>
           <p><strong>Trạng thái:</strong> {product.status}</p>
-          <p><strong>Time:</strong> {product.time}</p>
+          <p><strong>Mô tả:</strong> {description}</p> {/* Use fetched description */}
+          <p><strong>Danh mục:</strong> {product.category.categoryName}</p>
           <div className={styles.quantityContainer}>
             <label htmlFor="quantity"><strong>Số lượng:</strong></label>
             <input
@@ -57,10 +62,6 @@ function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuanti
               onChange={handleQuantityChange}
               className={styles.quantityInput}
             />
-          </div>
-          <div className={styles.descriptionContainer}>
-            <label><strong></strong></label> 
-            <p className={styles.descriptionText}>{description}</p>
           </div>
           <p><strong>Thành tiền (tạm tính):</strong> {subtotal.toLocaleString()} Vnd</p>
         </div>

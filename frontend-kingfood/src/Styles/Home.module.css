@@ -39,7 +39,7 @@
 .description-title {
     display: grid;
     grid-template-columns:68% 32%;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 165px;
     color: gray;
 }
