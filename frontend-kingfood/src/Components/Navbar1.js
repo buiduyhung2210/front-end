@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import styles from './Navbar1.module.css';
+import React, {useState} from 'react'
+import styles from './Navbar1.module.css'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+function Navbar1() {
+    const navigate = useNavigate();
+    const [cartQuantity] = useState(0); // State để lưu trữ số lượng trong giỏ hàng
+    const [errors, setErrors] = useState({});
+    const handleKINGFOODClick = () => {
+        navigate('/afterlogin'); 
 
-function Navbar1({ updateCartQuantity }) {
-  const navigate = useNavigate();
-  const [cartQuantity] = useState(0); // State để lưu trữ số lượng trong giỏ hàng
+    };
+    const handlelogout = (e) => {
+        e.preventDefault();
+            const qs = require('qs');
+            axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
+            ).then(response => {
+                console.log(response.data);
+                localStorage.setItem('uuid',null);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.' });
+            });
+            
+    };
 
-  // Hàm xử lý khi click vào icon giỏ hàng
   const handleCartClick = () => {
     navigate('/shopping-cart'); // Điều hướng đến trang ShoppingCartMenuPage.js
-  };
-
-  // Hàm xử lý khi click vào KINGFOOD
-  const handleKINGFOODClick = () => {
-    const isLoggedIn = false; // Thay đổi thành true nếu user đã đăng nhập
-    if (isLoggedIn) {
-      navigate('/afterlogin'); // Điều hướng sau khi đăng nhập
-    } else {
-      alert('Vui lòng đăng nhập trước khi tiếp tục!'); // Thông báo khi chưa đăng nhập
-    }
   };
 
   return (
@@ -40,6 +49,9 @@ function Navbar1({ updateCartQuantity }) {
               <input placeholder="Tìm kiếm nhà hàng hoặc món ăn..." />
             </div>
           </form>
+          <div className={styles['navbar-logout']} onClick={handlelogout}>
+                    Đăng xuất
+          </div>
         </div>
       </div>
       <div className={styles['shop-cart']} onClick={handleCartClick}>

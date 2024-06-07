@@ -1,24 +1,45 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import styles from './AfterLoginNavbar.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function AfterLoginNavbar(props) {
     const navigate = useNavigate();
-
+    const [errors, setErrors] = useState({});
     const handleProfileClick = () => {
         navigate('/profile');
     };
-
+    const handlelogout = (e) => {
+        e.preventDefault();
+            const qs = require('qs');
+            axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
+            ).then(response => {
+                console.log(response.data);
+                localStorage.setItem('uuid',null);
+                navigate('/')
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.' });
+            });
+    };
+    const handleMenuPage = (e) => {
+        e.preventDefault();
+        navigate('/MenuPage');
+    }
     return (
         <div className={styles.navbar}>
             <div className={styles['navbar-top']}>
                 <h3>KINGFOOD</h3>
                 <div>
-                    <button>Đặt món</button>
+                    <button onClick={handleMenuPage}>Đặt món</button>
                 </div>
                 <div className={styles['navbar-top']} onClick={handleProfileClick}>
                     <img src="/ellipse-1@2x.png" alt="avatar" />
                     <h3 className={styles['name']}>Kien</h3>
+                </div>
+                <div className={styles['navbar-logout']} onClick={handlelogout}>
+                    Đăng xuất
                 </div>
             </div>
             <div className={styles['navbar-content']}>

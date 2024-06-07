@@ -57,11 +57,7 @@ function Navbar(props) {
     };
 
     const handleRedirect = () => {
-        if (isLoggedIn) {
-            navigate('/afterlogin');
-        } else {
-            alert('Vui lòng đăng nhập trước khi tiếp tục!');
-        }
+        navigate('/');
     };
 
     const handleLogin = () => {
@@ -78,7 +74,7 @@ function Navbar(props) {
         setShowResetPassword(false);
         setShowSuccessPopup(true);
     };
-
+    
     return (
         <div className={styles.navbar}>
             <div className={styles['navbar-top']}>

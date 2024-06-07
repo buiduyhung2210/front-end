@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Signup.module.css';
 import SuccessSignup from './SuccessSignup';
-
+import axios from 'axios';
 const SignUpModal = ({ show, handleClose, handleShowModal }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -30,8 +30,20 @@ const SignUpModal = ({ show, handleClose, handleShowModal }) => {
         const validationErrors = validate();
         if (Object.keys(validationErrors).length === 0) {
             setShowSuccessSignup(true);
-            // Submit form
-            console.log('Form submitted');
+            axios.post('http://localhost:8080/AddCustomer', {
+                firstName:firstName,
+                lastname:lastName,
+                email:email,
+                password:password,
+            })
+            .then(response => {
+                console.log('Form submitted', response.data);
+                setShowSuccessSignup(true);
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+                setErrors({ submit: 'Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.' });
+            });
         } else {
             setErrors(validationErrors);
         }

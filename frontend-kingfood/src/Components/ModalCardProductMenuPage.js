@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import styles from './ModalCardProductMenuPage.module.css';
 import { getProductDescription } from '../Datas/ModalCardProductMenuPageData'; // Import function to get description
-
+import axios from 'axios';
 function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuantity }) {
   // Parse initial price from product
   const initialPrice = product.cost;
@@ -33,8 +33,26 @@ function ModalCardProductMenuPage({ show, handleClose, product, updateCartQuanti
 
   // Handle adding to cart
   const handleAddToCart = () => {
-    updateCartQuantity(quantity); // Gọi hàm updateCartQuantity từ props
-    console.log(`Added ${quantity} of ${product.itemName} to cart`);
+    // updateCartQuantity(quantity); // Gọi hàm updateCartQuantity từ props
+    console.log(product.itemName);
+    axios.post('http://localhost:8080/createFoodCart/' + localStorage.getItem('userId'),{
+    "items": [
+        {
+        "itemId": String(product.itemId),
+        "itemName": String(product.itemName)
+}
+    ]
+    }).then(
+      response => {
+        console.log(`Added ${quantity} of ${product.itemName} to cart`);
+        console.log(response.data);
+      }
+    ).catch(
+      error => {
+        console.log(error);
+      }
+    )
+    
     handleClose();
   };
 

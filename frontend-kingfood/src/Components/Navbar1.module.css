@@ -1,6 +1,6 @@
 .navbar {
     display: grid;
-    grid-template-columns: 15% 60% 10% 15%;
+    grid-template-columns: 15% 50% 10% 10% 15%;
     margin-left: 5%;
     margin-right: 5%;
     height: 119px;
@@ -45,6 +45,21 @@
 
 .navbar-top h3 {
     margin-top: 27px;
+}
+
+.navbar-logout {
+    background-color: #E34949;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: none; 
+    outline: none; 
+    margin-top: 30px
+
 }
 
 .vertical-line {
