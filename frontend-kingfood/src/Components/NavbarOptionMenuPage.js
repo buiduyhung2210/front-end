@@ -35,9 +35,11 @@ const NavbarOptionMenuPage = () => {
 
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory(categoryName);
+    console.log(categoryName);
     if (categoryName) {
       const filtered = items.filter(item => item.category.categoryName === categoryName);
       setFilteredItems(filtered);
+      console.log(categoryName);
     } else {
       setFilteredItems(items); // Show all items when no category is selected
     }
