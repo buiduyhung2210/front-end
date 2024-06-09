@@ -16,7 +16,7 @@ function Navbar1() {
             axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
             ).then(response => {
                 console.log(response.data);
-                localStorage.setItem('uuid',null);
+                localStorage.clear();
                 navigate('/');
             })
             .catch(error => {
@@ -49,9 +49,6 @@ function Navbar1() {
               <input placeholder="Tìm kiếm nhà hàng hoặc món ăn..." />
             </div>
           </form>
-          <div className={styles['navbar-logout']} onClick={handlelogout}>
-                    Đăng xuất
-          </div>
         </div>
       </div>
       <div className={styles['shop-cart']} onClick={handleCartClick}>
@@ -60,7 +57,10 @@ function Navbar1() {
       </div>
       <div className={styles['navbar-top']}>
         <img src="/ellipse-1@2x.png" alt="avatar" />
-        <h3 className={styles['name']}>Kien</h3>
+        <h3 className={styles['name']}>{localStorage.getItem('userFname')}</h3>
+      </div>
+      <div className={styles['navbar-logout']} onClick={handlelogout}>
+                    Đăng xuất
       </div>
     </div>
   );

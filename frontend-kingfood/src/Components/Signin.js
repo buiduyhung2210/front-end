@@ -36,7 +36,7 @@ const SignInModal = ({ show, handleClose, handleForgotPasswordClick, handleShowM
                 localStorage.setItem('userLname',user.lastname);
                 localStorage.setItem('userEmail',user.email);
                 localStorage.setItem('userImage',user.image);
-                localStorage.setItem('userPassword',user.password);
+                // localStorage.setItem('userPassword',user.password);
                 console.log('User info saved in local storage');
             }
     ).catch(error => {

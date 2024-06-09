@@ -15,7 +15,7 @@ function AfterLoginNavbar(props) {
             axios.post('http://localhost:8080/logout',qs.stringify({'key':localStorage.getItem('uuid')})
             ).then(response => {
                 console.log(response.data);
-                localStorage.setItem('uuid',null);
+                localStorage.clear();
                 navigate('/')
             })
             .catch(error => {
@@ -36,7 +36,7 @@ function AfterLoginNavbar(props) {
                 </div>
                 <div className={styles['navbar-top']} onClick={handleProfileClick}>
                     <img src="/ellipse-1@2x.png" alt="avatar" />
-                    <h3 className={styles['name']}>Kien</h3>
+                    <h3 className={styles['name']}>{localStorage.getItem('userFname')}</h3>
                 </div>
                 <div className={styles['navbar-logout']} onClick={handlelogout}>
                     Đăng xuất
