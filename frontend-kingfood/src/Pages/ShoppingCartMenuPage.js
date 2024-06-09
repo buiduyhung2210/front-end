@@ -1,28 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar1 from '../Components/Navbar1';
 import Footer from '../Components/Footer';
 import '../Styles/ShoppingCartMenuPage.css';
-
+import axios from 'axios';
 export default function ShoppingCartMenuPage() {
+    const [cartItems,setCartitems] = useState([])
     const navigate = useNavigate();
-
+    const [done,setDone] = useState(true)
+    const viewCart = () => {
+        axios.post('http://localhost:8080/viewCart',{
+            "customerId": localStorage.getItem('userId')
+        }).then(
+            response => {
+                console.log(response.data);
+                setCartitems(response.data)
+            }
+        ).catch(error => {
+            console.error('There was an error!', error);
+            setCartitems([]);
+        })
+    }
+    if (done) {
+        viewCart();
+        setDone(false);
+    }
     // Hàm xử lý khi click vào dòng text "GIỎ HÀNG"
     const handleBackTextClick = () => {
         navigate(-1); // Quay lại trang trước đó trong lịch sử duyệt
     };
 
-    // Danh sách các món hàng ví dụ
-    const cartItems = [
-        { id: 1, name: 'Mì Quảng', quantity: 2, price: 45000 },
-        { id: 2, name: 'Phở Gà', quantity: 1, price: 35000 },
-        { id: 3, name: 'Bánh Mỳ', quantity: 3, price: 15000 }
-    ];
-
     // Hàm xử lý khi click nút Xóa món hàng
-    const handleDeleteItemClick = (itemId) => {
-        // Viết logic xử lý xóa món hàng ở đây (chưa cung cấp logic cụ thể)
-        console.log(`Xóa món hàng có id: ${itemId}`);
+    const handleDeleteItemClick = (cartId) => {
+        axios.delete('http://localhost:8080/clearCart/' + cartId).then(
+            response => {
+                console.log(response.data);
+                viewCart();
+            }
+        ).catch(
+            error => {
+                console.error(error);
+            }
+        );
     };
 
     return (
@@ -43,13 +62,13 @@ export default function ShoppingCartMenuPage() {
                     </thead>
                     <tbody>
                         {cartItems.map(item => (
-                            <tr key={item.id}>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.price}</td>
-                                <td>{item.quantity * item.price}</td>
+                            <tr key={item.items[0].itemId}>
+                                <td>{item.items[0].itemName}</td>
+                                <td>1</td>
+                                <td>{item.items[0].cost}</td>
+                                <td>{item.items[0].cost}</td>
                                 <td>
-                                    <button onClick={() => handleDeleteItemClick(item.id)}>Xóa</button>
+                                    <button onClick={() => handleDeleteItemClick(item.cartId)}>Xóa</button>
                                 </td>
                             </tr>
                         ))}
@@ -59,7 +78,7 @@ export default function ShoppingCartMenuPage() {
             {/* Container cho dòng text "GIỎ HÀNG" */}
             <div className="back-text-container" onClick={handleBackTextClick}>
                 <p className="back-text">
-                    GIỎ HÀNG
+                    Quay lại
                 </p>
             </div>
             <Footer /> {/* Bao gồm Footer */}
